@@ -3,6 +3,9 @@ resource "aws_instance" "web" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "HelloWorld"
+    Name = "Frontend"
   }
+}
+output "instance_ip_addr" {
+  value = aws_instance.server.private_ip
 }
