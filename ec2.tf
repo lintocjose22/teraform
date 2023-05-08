@@ -1,5 +1,5 @@
-data "aws_ami" "example" {
-  most_recent = true
+data "aws_ami" "example"
+{
   owners = ["506664043528"]
   }
 output "aws_ami" {
