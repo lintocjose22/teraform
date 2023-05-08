@@ -3,7 +3,7 @@ resource "aws_instance" "frontend" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "Frontend"
+    Name = "linto"
   }
 }
 output "instance_ip_addr" {
