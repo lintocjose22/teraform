@@ -2,11 +2,16 @@ data "aws_ami" "example" {
     most_recent = true
     owners = ["973714476881"]
   }
-
+data "aws_security_group" "alloall"{
+  name = "alloall"
+  }
+variable "instance_type" {
+  default = "t3.micro"
+}
 resource "aws_instance" "frontend" {
   ami           = data.aws_ami.example.image_id
-  instance_type = "t3.micro"
-
+  instance_type = var.instance_type
+  vpc_security_group_ids = data.aws_security_group.alloall
   tags = {
     Name = "frontend"
   }
@@ -17,12 +22,14 @@ output "Frontend" {
 
 resource "aws_instance" "cart" {
   ami           = data.aws_ami.example.image_id
-  instance_type = "t3.micro"
-  vpc_security_group_ids = ["sg-09a72eff5ac9bd4bc"]
+  instance_type = var.instance_type
+  vpc_security_group_ids = data.aws_security_group.alloall
     tags = {
     Name = "cart"
   }
 }
+
+
 output "instance_Cart" {
   value = aws_instance.cart.public_ip
 }
