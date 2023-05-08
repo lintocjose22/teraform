@@ -6,10 +6,9 @@ resource "aws_instance" "frontend" {
     Name = "frontend"
   }
 }
-output "instance_ip_addr" {
+output "Frontend" {
   value = aws_instance.frontend.public_ip
 }
-
 
 resource "aws_instance" "cart" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
@@ -19,6 +18,6 @@ resource "aws_instance" "cart" {
     Name = "cart"
   }
 }
-output "instance_ip_addr" {
+output "instance_Cart" {
   value = aws_instance.cart.public_ip
 }
