@@ -1,3 +1,13 @@
+data "aws_ami" "example" {
+  most_recent = true
+
+  owners = ["506664043528"]
+  }
+output "AMIID" {
+  value = data.aws_ami.example.image_id
+}
+
+
 resource "aws_instance" "frontend" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
   instance_type = "t3.micro"
