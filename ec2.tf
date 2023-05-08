@@ -1,5 +1,5 @@
 data "aws_ami" "example" {
-    owners = ["506664043528"]
+    owners = ["973714476881"]
   }
 output "aws_ami" {
   value = data.aws_ami.example.image_id
