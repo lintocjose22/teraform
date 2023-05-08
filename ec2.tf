@@ -18,7 +18,7 @@ output "Frontend" {
 resource "aws_instance" "cart" {
   ami           = data.aws_ami.example.image_id
   instance_type = "t3.micro"
-  vpc_security_group_ids = "sg-09a72eff5ac9bd4bc"
+  subnet_id = "sg-09a72eff5ac9bd4bc"
   tags = {
     Name = "cart"
   }
