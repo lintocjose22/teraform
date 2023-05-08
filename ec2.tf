@@ -16,9 +16,9 @@ resource "aws_instance" "cart" {
   instance_type = "t3.micro"
 
   tags = {
-    Name = "frontend"
+    Name = "cart"
   }
 }
 output "instance_ip_addr" {
-  value = aws_instance.frontend.public_ip
+  value = aws_instance.cart.public_ip
 }
