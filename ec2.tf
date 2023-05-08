@@ -1,4 +1,4 @@
-resource "aws_instance" "web" {
+resource "aws_instance" "frontend" {
   ami           = "ami-0b5a2b5b8f2be4ec2"
   instance_type = "t3.micro"
 
@@ -7,5 +7,5 @@ resource "aws_instance" "web" {
   }
 }
 output "instance_ip_addr" {
-  value = aws_instance.server.private_ip
+  value = aws_instance.frontend.public_ip
 }
