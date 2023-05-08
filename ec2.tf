@@ -11,7 +11,7 @@ variable "instance_type" {
 resource "aws_instance" "frontend" {
   ami           = data.aws_ami.example.image_id
   instance_type = var.instance_type
-  vpc_security_group_ids = data.aws_security_group.alloall
+  vpc_security_group_ids = data.aws_security_group.alloall.id
   tags = {
     Name = "frontend"
   }
@@ -23,7 +23,7 @@ output "Frontend" {
 resource "aws_instance" "cart" {
   ami           = data.aws_ami.example.image_id
   instance_type = var.instance_type
-  vpc_security_group_ids = data.aws_security_group.alloall
+  vpc_security_group_ids = data.aws_security_group.alloall.id
     tags = {
     Name = "cart"
   }
