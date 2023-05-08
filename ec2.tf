@@ -2,9 +2,6 @@ data "aws_ami" "example" {
     most_recent = true
     owners = ["973714476881"]
   }
-output "aws_ami" {
-  value =
-}data.aws_ami.example.image_id
 
 resource "aws_instance" "frontend" {
   ami           = data.aws_ami.example.image_id
