@@ -16,7 +16,7 @@ output "Frontend" {
 }
 
 resource "aws_instance" "cart" {
-  ami           = "data.aws_ami.example.image_id"
+  ami           = data.aws_ami.example.image_id
   instance_type = "t3.micro"
 
   tags = {
