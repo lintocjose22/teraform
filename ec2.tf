@@ -1,4 +1,4 @@
-data "aws_ami" "example" {
+data "aws_ami" "ami" {
     most_recent = true
     owners = ["973714476881"]
   }
@@ -8,28 +8,20 @@ data "aws_security_group" "alloall"{
 variable "instance_type" {
   default = "t3.micro"
 }
-resource "aws_instance" "frontend" {
-  ami           = data.aws_ami.example.image_id
+variable "components" {
+  default = ["frontend","magodb","catalog"]
+}
+resource "aws_instance" "instance" {
+  count = length(var.components)
+  ami           = data.aws_ami.ami.image_id
   instance_type = var.instance_type
   vpc_security_group_ids = [data.aws_security_group.alloall.id]
   tags = {
-    Name = "frontend"
+    Name = var.components[count.index]
   }
+  output "servername" {
+    value = aws_instance.instance.public_dns
+
 }
-output "Frontend" {
-  value = aws_instance.frontend.public_ip
 }
 
-resource "aws_instance" "cart" {
-  ami           = data.aws_ami.example.image_id
-  instance_type = var.instance_type
-  vpc_security_group_ids = [data.aws_security_group.alloall.id]
-    tags = {
-    Name = "cart"
-  }
-}
-
-
-output "instance_Cart" {
-  value = aws_instance.cart.public_ip
-}
