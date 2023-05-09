@@ -22,5 +22,5 @@ resource "aws_instance" "instance" {
   }
     }
 output "servername" {
-  value = aws_instance.instance.private_ip
+  value = aws_instance.instance[count.index]
 }
