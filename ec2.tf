@@ -7,7 +7,7 @@ data "aws_security_group" "alloall"{
   }
 //variable "instance_type" {
 //  default = "t3.micro"
-}
+//}
 variable "components" {
   default = {
     frontend= {
