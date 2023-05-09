@@ -23,4 +23,5 @@ resource "aws_instance" "instance" {
 
 
 output "servername" {
-value = aws_instance.instance.public_dns
+  value = aws_instance.instance.public_dns
+}
