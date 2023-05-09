@@ -9,15 +9,25 @@ variable "instance_type" {
   default = "t3.micro"
 }
 variable "components" {
-  default = ["frontend","magodb","catalog"]
-}
+  default = {
+    frontend= {
+      name     = "frontend"
+      instance = "t3.micro"
+    }
+    catalog= {
+      name     = "catalog"
+      instance = "t3.micro"
+    }
+    }
+  }
+
 resource "aws_instance" "instance" {
-  count                  = length(var.components)
+  for_each = var.components
   ami                    = data.aws_ami.ami.image_id
-  instance_type          = var.instance_type
+  instance_type          = each.value.["instancetype"]
   vpc_security_group_ids = [data.aws_security_group.alloall.id]
   tags                   = {
-    Name = var.components[count.index]
-  }
+   Name = each.value["name"]
+    }
 }
 
