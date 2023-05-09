@@ -12,11 +12,11 @@ variable "components" {
   default = {
     frontend= {
       name     = "frontend"
-      instance = "t3.micro"
+      instance_type = "t3.micro"
     }
     catalog= {
       name     = "catalog"
-      instance = "t3.micro"
+      instance_type = "t3.micro"
     }
     }
   }
