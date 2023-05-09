@@ -20,7 +20,7 @@ resource "aws_instance" "instance" {
     Name = var.components[count.index]
   }
   }
-}
+
 
 output "servername" {
 value = aws_instance.instance.public_dns
