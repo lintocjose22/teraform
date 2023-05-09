@@ -18,5 +18,9 @@ resource "aws_instance" "instance" {
   vpc_security_group_ids = [data.aws_security_group.alloall.id]
   tags = {
     Name = var.components[count.index]
+
   }
-  }
+    }
+output "servername" {
+  value = aws_instance.instance
+}
