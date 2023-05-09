@@ -24,7 +24,7 @@ variable "components" {
 resource "aws_instance" "instance" {
   for_each = var.components
   ami                    = data.aws_ami.ami.image_id
-  instance_type          = each.value.["instancetype"]
+  instance_type          = each.value["instancetype"]
   vpc_security_group_ids = [data.aws_security_group.alloall.id]
   tags                   = {
    Name = each.value["name"]
