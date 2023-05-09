@@ -5,8 +5,8 @@ data "aws_ami" "ami" {
 data "aws_security_group" "alloall"{
   name = "alloall"
   }
-variable "instance_type" {
-  default = "t3.micro"
+//variable "instance_type" {
+//  default = "t3.micro"
 }
 variable "components" {
   default = {
